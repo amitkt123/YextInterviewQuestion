@@ -1,0 +1,19 @@
+1. Initialize the program in the main() method by calling APIs to fetch player and game data using HTTP GET requests.
+
+2. Call GetResponse() to make an HTTP GET request to the PLAYERS API endpoint. This method retrieves the raw JSON response from the server.
+
+3. Parse the players' JSON response: Use JSONObject and JSONArray to extract player information (ID and name). Store this data in a PlayersMap (a HashMap<Integer, String>).
+
+4. Call GetResponse() again to fetch game data from the /games endpoint. Retrieve the raw JSON data and parse it.
+
+5. Parse the games' JSON response: Extract game information (ID and name) and store it in the GamesMap (a HashMap<Integer, String>).
+
+6. Create a leaderboard by calling CreateLeaderBoard(gameId), passing in the game ID for which the leaderboard is to be generated (e.g., game ID = 1).
+
+7. For each player in the PlayersMap, fetch their score data from the scores endpoint /players/{playerId}/scores. The GetResponse() function is used again for each player's scores.
+
+8. Filter and calculate the highest score for the specified game (by game ID) using a loop over the returned JSON data. The highest score is stored in scoresMap, mapping player IDs to their highest scores.
+
+9. Sort the scoresMap by score in descending order and limit it to the top 10 players. Use Stream and Collectors to create a sorted LinkedHashMap.
+
+10. Display the results: Print the game name, and then loop through the top 10 players, printing each player’s name (from PlayersMap) and score from the sorted map.
