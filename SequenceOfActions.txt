@@ -1,3 +1,7 @@
+This explains the workflow for the code. 
+--> No Spring, Springboot used. 
+--> One helper class to show the leaderboard was used
+
 1. Initialize the program in the main() method by calling APIs to fetch player and game data using HTTP GET requests.
 
 2. Call GetResponse() to make an HTTP GET request to the PLAYERS API endpoint. This method retrieves the raw JSON response from the server.
