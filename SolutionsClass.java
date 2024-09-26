@@ -16,6 +16,14 @@ public class SolutionsClass {
     static HashMap<Integer, String> PlayersMap = new HashMap<>();
     static HashMap<Integer, String> GamesMap = new HashMap<>();
 
+
+     /**
+     * Retrieves the HTTP response from a given URL as a String.
+     * 
+     * @param urlString the URL to fetch the response from, in string format
+     * @return the response from the server as a String
+     * @throws MalformedURLException if the given URL string is invalid
+     */
     public static String GetResponse(String urlString) throws MalformedURLException {
         URL url = new URL(urlString);
         HttpURLConnection conn;
@@ -47,6 +55,14 @@ public class SolutionsClass {
 
         return " ";
     }
+    
+     /**
+     * Writes the given JSON string to a file.
+     * NOT USED IN THIS CODE .CAN BE CALLED TO WRITE JSON TO A FILE
+     * @param jsonString the JSON content to write to the file
+     * @param fileName the name of the file (including path if necessary) where the JSON will be saved
+     * @throws IOException if an I/O error occurs during writing
+     */
     public static void writeToJsonFile(String jsonString, String fileName) {
         try (FileWriter fileWriter = new FileWriter(fileName); PrintWriter printWriter = new PrintWriter(fileWriter)) {
             printWriter.write(jsonString);
@@ -56,7 +72,14 @@ public class SolutionsClass {
             e.printStackTrace();
         }
     }
-
+  
+     /**
+     * Fetches player scores for a specific game and creates a leaderboard.
+     *
+     * @param gameId the ID of the game for which to create the leaderboard
+     * @return a LeaderBoard object populated with the player scores for the given game
+     * @throws MalformedURLException if the URL for fetching player scores is invalid
+     */
     public static LeaderBoard CreateLeaderBoard(int gameId) throws MalformedURLException {
         //get the scores for all the players and sort
         HashMap<Integer, Integer> scoresMap = new HashMap<>();
@@ -84,6 +107,8 @@ public class SolutionsClass {
         return leaderBoard;
 
     }
+
+    
      public static void main(String[] args) throws MalformedURLException     {
         try{
              String players = GetResponse(PLAYERS);
